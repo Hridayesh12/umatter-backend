@@ -1,7 +1,16 @@
 from flask import Flask, jsonify, request
 import numpy as np
 from model import *
+from flask_cors import CORS
+
 app=Flask(__name__)
+CORS(app)
+cors = CORS(app, resource={
+    r"/*":{
+        "origins":"*"
+    }
+})
+
 @app.route('/')
 def hello():
     return "Hello"
